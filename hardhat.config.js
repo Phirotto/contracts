@@ -15,11 +15,15 @@ module.exports = {
   networks: {
     hardhat: {
     },
-    mainnet: {
-      url: "https://mainnet.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161",
+    // mainnet: {
+    //   url: "https://mainnet.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161",
+    //   accounts: [PRIVATE_KEY],
+    //   gasPrice: 26 * 1e9,
+    //   chainId: 1,
+    // },
+    sepolia: {
+      url: "https://sepolia.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161",
       accounts: [PRIVATE_KEY],
-      gasPrice: 26 * 1e9,
-      chainId: 1,
     },
     opbnb: {
       url: "https://opbnb-testnet.nodereal.io/v1/64a9df0874fb4a93b9d0a3849de012d3",
@@ -56,6 +60,7 @@ module.exports = {
         goerli: ETHERSCAN,
         kovan: ETHERSCAN,
         goerli: ETHERSCAN,
+        sepolia: ETHERSCAN,
         // ftm
         opera: FTMSCAN,
         ftmTestnet: FTMSCAN,

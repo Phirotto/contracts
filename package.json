@@ -13,8 +13,7 @@
     "updates": "^15.1.1"
   },
   "scripts": {
-    "deploy:goerli": "hardhat run --network goerli ./scripts/deploy.js",
-    "deploy:opbnb": "hardhat run --network opbnb ./scripts/deploy.js",
+    "deploy:sepolia": "hardhat run --network sepolia ./scripts/deploy.js",
     "test:dependencies": "updates --update ./"
   },
   "dependencies": {
