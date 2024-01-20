@@ -3,9 +3,9 @@ require("@nomicfoundation/hardhat-verify");
 require("hardhat-gas-reporter");
 require("dotenv").config();
 
-require('dotenv').config({ path: __dirname + '/.env' })
+require("dotenv").config({ path: __dirname + "/.env" });
 
-const { PRIVATE_KEY, ETHERSCAN, POLYGONSCAN, FTMSCAN } = process.env;
+const { PRIVATE_KEY, ETHERSCAN, POLYGONSCAN, FTMSCAN, OPTSCAN } = process.env;
 
 /**
  * @type import('hardhat/config').HardhatUserConfig
@@ -13,8 +13,7 @@ const { PRIVATE_KEY, ETHERSCAN, POLYGONSCAN, FTMSCAN } = process.env;
 module.exports = {
   defaultNetwork: "hardhat",
   networks: {
-    hardhat: {
-    },
+    hardhat: {},
     // mainnet: {
     //   url: "https://mainnet.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161",
     //   accounts: [PRIVATE_KEY],
@@ -56,41 +55,52 @@ module.exports = {
       url: "https://rpc.testnet.fantom.network",
       accounts: [PRIVATE_KEY],
       // gasPrice: 35000000000,
-    }
+    },
   },
   etherscan: {
     apiKey: {
-        mainnet: ETHERSCAN,
-        ropsten: ETHERSCAN,
-        rinkeby: ETHERSCAN,
-        goerli: ETHERSCAN,
-        kovan: ETHERSCAN,
-        goerli: ETHERSCAN,
-        sepolia: ETHERSCAN,
-        // ftm
-        opera: FTMSCAN,
-        ftmTestnet: FTMSCAN,
-        // polygon
-        polygon: POLYGONSCAN,
-        polygonMumbai: POLYGONSCAN,
-    }
+      mainnet: ETHERSCAN,
+      ropsten: ETHERSCAN,
+      rinkeby: ETHERSCAN,
+      goerli: ETHERSCAN,
+      kovan: ETHERSCAN,
+      goerli: ETHERSCAN,
+      sepolia: ETHERSCAN,
+      // ftm
+      opera: FTMSCAN,
+      ftmTestnet: FTMSCAN,
+      // polygon
+      polygon: POLYGONSCAN,
+      polygonMumbai: POLYGONSCAN,
+      optimisticSepolia: OPTSCAN,
+    },
+    customChains: [
+      {
+        network: "optimisticSepolia",
+        chainId: 11155420,
+        urls: {
+          apiURL: "https://api-sepolia-optimism.etherscan.io/api",
+          browserURL: "https://sepolia-optimism.etherscan.io/",
+        },
+      },
+    ],
   },
   solidity: {
     version: "0.8.23",
     settings: {
       optimizer: {
         enabled: true,
-        runs: 200
-      }
-    }
+        runs: 200,
+      },
+    },
   },
   paths: {
     sources: "./contracts",
     tests: "./test",
     cache: "./cache",
-    artifacts: "./artifacts"
+    artifacts: "./artifacts",
   },
   mocha: {
-    timeout: 80000
-  }
+    timeout: 80000,
+  },
 };
