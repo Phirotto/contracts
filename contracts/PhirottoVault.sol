@@ -78,6 +78,11 @@ contract PhirottoVault is AdminAccess, ReentrancyGuard {
         }
     }
 
+    function fillPercent() public view returns (uint256) {
+        uint256 ghoBalance = IERC20(GHO_TOKEN_L2).balanceOf(address(this)) + totalGhoWithdrawned;
+        return (ghoBalance * 100 / requestedAmount);
+    }
+
     /* ========== INTERNAL FUNCTIONS ========== */
 
     function calculateWithdrawAmount(UserState storage user, uint256 ghoBalance) internal view returns (uint256) {
