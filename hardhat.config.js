@@ -24,6 +24,12 @@ module.exports = {
     sepolia: {
       url: "https://sepolia.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161",
       accounts: [PRIVATE_KEY],
+      chainId: 11155111,
+    },
+    optimisticSepolia: {
+      url: "https://sepolia.optimism.io",
+      accounts: [PRIVATE_KEY],
+      chainId: 11155420,
     },
     opbnb: {
       url: "https://opbnb-testnet.nodereal.io/v1/64a9df0874fb4a93b9d0a3849de012d3",

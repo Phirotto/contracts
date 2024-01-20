@@ -14,10 +14,12 @@
   },
   "scripts": {
     "deploy:sepolia": "hardhat run --network sepolia ./scripts/deploy.js",
+    "deploy:opsepolia": "hardhat run --network optimisticSepolia ./scripts/deploy.js",
     "test:dependencies": "updates --update ./"
   },
   "dependencies": {
     "@openzeppelin/merkle-tree": "^1.0.5",
+    "big.js": "^6.2.1",
     "dotenv": "^16.3.1",
     "node-gyp": "^10.0.1"
   }

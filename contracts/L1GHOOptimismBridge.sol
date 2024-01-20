@@ -6,7 +6,7 @@ import '@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol';
 import './interfaces/IOptimismL1StandardBridge.sol';
 import './helpers/AdminAccess.sol';
 
-contract L1OptimismBridger is AdminAccess {
+abstract contract L1GHOOptimismBridge is AdminAccess {
 
     using SafeERC20 for IERC20;
 
@@ -68,4 +68,7 @@ contract L1OptimismBridger is AdminAccess {
     ) external onlyAdminOrOwner {
         _minGasLimit = _newLimit;
     }
+}
+
+contract OptimismGHOBridge is L1GHOOptimismBridge {
 }

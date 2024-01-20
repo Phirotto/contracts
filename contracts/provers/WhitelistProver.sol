@@ -22,5 +22,4 @@ contract WhitelistParticipationProver is IParticipationProver {
         bytes32 leaf = keccak256(bytes.concat(keccak256(abi.encode(potentialParticipant, amount))));
         return MerkleProof.verify(proof, merkleRoot, leaf);
     }
-
 }
