@@ -27,7 +27,7 @@ contract PhirottoVault is AdminAccess, ReentrancyGuard {
 
     /* ========== STATE VARIABLES ========== */
 
-    uint256 requestedAmount;
+    uint256 public requestedAmount;
     uint256 totalGhoWithdrawned;
     IParticipationProver public whitelist;
     mapping(address => UserState) public participants;
