@@ -29,10 +29,11 @@ contract PhirottoFactory is AdminAccess {
     function deployVault(
         string memory _vaultName,
         address whitelist,
-        address _vaultAdmin
+        address _vaultAdmin,
+        uint256 requestedAmount
     ) external returns (address vault) {
-        vault = address(new PhirottoVault(_vaultName, whitelist, _vaultAdmin));
-        vaultAddresses[_vaultName] = _vaultAdmin;
+        vault = address(new PhirottoVault(_vaultName, requestedAmount, whitelist, _vaultAdmin));
+        vaultAddresses[_vaultName] = vault;
     }
 
     /* ========== VIEWS ========== */
