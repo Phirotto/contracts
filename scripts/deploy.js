@@ -5,7 +5,7 @@ const erc20Json = require('../contractABIs/ERC20.json');
 
 var currentGHOBridge = "0xE4A807726eD207Cb956fC10609978B3F39323763";
 var currentPhirottoGateway = "0x77c3c4cC64e3BF9801AdF6370fF5C76eE27c61bE";
-var currentPhirottoFactory = "";
+var currentPhirottoFactory = "0x8f7abeadfd935dbb878bebca7e694149c09e6f57";
 const ghoSepoliaAddress = "0xc4bF5CbDaBE595361438F8c6a187bDc330539c60";
 const treasuryAddress = "0xE665CEf14cB016b37014D0BDEAB4A693c3F46Cc0";
 
@@ -33,7 +33,7 @@ async function main() {
   // await deployPhirottoGateway()
   // await setupGatewayTokens()
   /* Before running this make sure you've made approval from L1 Vault to gateway address */
-  await setupFakeL2VaultAndBridgeTokens()
+  // await setupFakeL2VaultAndBridgeTokens()
 
   // Factory setup
   // await deployPhirottoFactory()
@@ -111,9 +111,7 @@ async function deployPhirottoFactory() {
   console.log("Address of Phirotto Factory on OP Sepolia:", contract.address);
   currentPhirottoFactory = contract.address
 
-  if (!verify) { return } 
-  // currently not working on OP Setpolia so skipping this
-  return
+  if (!verify) { return }
   await delay(30000);
   try {
     await hre.run("verify:verify", {
