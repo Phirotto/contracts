@@ -53,6 +53,7 @@ contract PhirottoVault is AdminAccess, ReentrancyGuard {
         uint256 amount,
         bytes calldata proof
     ) public nonReentrant {
+        require(!participants[account].registered, "Account already registered");
         require(whitelist.hasParticipated(account, amount, proof), "Non whitelisted user");
         participants[account] = UserState({
             registered: true,
