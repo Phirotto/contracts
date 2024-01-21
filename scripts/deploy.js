@@ -37,6 +37,9 @@ async function main() {
 
   // Factory setup
   // await deployPhirottoFactory()
+
+  // Verify Vault - enter address here
+  // await verifyVault("0xb0974cf226418f4270cacf7991a73938ae6a9b31")
 }
 
 async function deployBridger() {
@@ -251,6 +254,24 @@ async function deployFactory(svgPath, scale) {
   const result = await contract.createVault(
   );
   console.log(result);
+}
+
+async function verifyVault(address) {
+  try {
+    await hre.run("verify:verify", {
+        address: address,
+        network: hre.network,
+        constructorArguments: [
+          "ETHTest", // string memory _vaultName,
+          300, // uint256 _requestedAmount,
+          "0xb6cef5a4e73cef29590708579b5d1c2c0b9eded8", // address _whitelist,
+          "0xE665CEf14cB016b37014D0BDEAB4A693c3F46Cc0", // address _admin
+        ]
+    });
+  } catch (error) {
+      console.error(error);
+      return contract
+  }
 }
 
 const delay = ms => new Promise(res => setTimeout(res, ms));
